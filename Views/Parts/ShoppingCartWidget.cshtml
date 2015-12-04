@@ -1,0 +1,10 @@
+﻿@{
+    Script.Require("Webshop").AtFoot();
+    Style.Require("FontAwesome");
+}
+
+<div ng-controller="shoppingCartCtrl as cart">
+    <i class="fa fa-shopping-cart"></i> {{ cart.cart.totalItems }}
+    <ng-pluralize count="cart.cart.totalItems" when="{'one':'item','other':'items'}"></ng-pluralize>
+    <span ng-if="cart.cart.totalItems">- € {{ cart.cart.total }}</span>
+</div>

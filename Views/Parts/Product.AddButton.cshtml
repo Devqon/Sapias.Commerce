@@ -1,0 +1,13 @@
+﻿@{
+    var productId = (int)Model.ProductId;
+    var canOrder = (bool)Model.CanAdd;
+}
+
+@if (canOrder) {
+    using (Html.BeginFormAntiForgeryPost(Url.Action("Add", "ShoppingCart", new { id = productId, area = "Sapias.Commerce" }), FormMethod.Post, new { ng_controller = "shoppingCartCtrl as cart", ng_submit = "cart.submitAdd($event, " + productId + ", 1)" })) {
+        <button type="submit">@T("Add to shoppingcart")</button>
+    }
+}
+else {
+    <span>@T("You cannot order this product")</span>
+}

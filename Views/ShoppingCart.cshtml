@@ -1,0 +1,36 @@
+﻿@using Sapias.Commerce.Models
+
+@{ 
+    var items = (List<dynamic>)Model.Products;
+    var subtotal = (decimal)Model.Subtotal;
+    var vat = (decimal)Model.Vat;
+    var total = (decimal)Model.Total;
+}
+
+@if (!items.Any()) {
+    <p>You don't have any items in your shopping cart.</p>
+    <a class="button" href="#">Continue shopping</a>
+}
+else {
+    <table class="table table-striped">
+        <tr>
+            <th>Article</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+        </tr>
+        @foreach(var item in items) {
+            var product = (ProductPart)item.ProductPart;
+            var price = product.Price;
+            var quantity = (int)item.Quantity;
+            var totalPrice = price * quantity;
+
+            <tr>
+                <td>@item.Title</td>
+                <td>@price.ToString("c")</td>
+                <td>@quantity</td>
+                <td>@totalPrice.ToString("c")</td>
+            </tr>
+        }
+    </table>
+}

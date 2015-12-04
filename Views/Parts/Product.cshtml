@@ -1,0 +1,11 @@
+﻿﻿@{
+    var price = (decimal)Model.Price;
+    var sku = (string)Model.Sku;
+    var inventory = (int)Model.Inventory;
+    var discountPrice = (decimal)Model.DiscountPrice;
+    var isDiscount = discountPrice > -1;
+}
+<article>
+    Price: @price<br />
+    Sku: @sku
+</article>
